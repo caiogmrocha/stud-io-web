@@ -60,9 +60,11 @@ export default function RegisterProfile() {
 						</fieldset>
 					</div>
 
-					<footer>
-						<button type="button">Voltar</button>
-						<button type="submit">Cadastrar-se</button>
+					<hr className="border-t-2 border-slate-300 w-[100%]" />
+
+					<footer className="flex w-[100%] gap-5">
+						<Form.Button type="button" block outline>Voltar</Form.Button>
+						<Form.Button type="submit" block>Cadastrar-se</Form.Button>
 					</footer>
 				</form>
 			</FormProvider>

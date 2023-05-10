@@ -1,4 +1,4 @@
-import { InputHTMLAttributes, LabelHTMLAttributes } from "react";
+import { LabelHTMLAttributes } from "react";
 
 export function Label({ children, ...props }: LabelHTMLAttributes<HTMLLabelElement>) {
 	return (
