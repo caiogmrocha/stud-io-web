@@ -1,3 +1,4 @@
+import { getFieldErrorMessages } from "@/utils/forms";
 import { InputHTMLAttributes } from "react";
 import { useFormContext } from 'react-hook-form';
 
@@ -6,7 +7,9 @@ type IInputProps = InputHTMLAttributes<HTMLInputElement> & {
 };
 
 export function Input(props: IInputProps) {
-	const { register } = useFormContext();
+	const { register, formState: { errors } } = useFormContext();
+
+	const fieldError = getFieldErrorMessages(errors, props.name);
 
 	const defaultClasses = [
 		'flex',
@@ -27,10 +30,19 @@ export function Input(props: IInputProps) {
 		'focus:ring-slate-400',
 	];
 
+	const invalidClasses = [
+		'border-red-500',
+		'focus:ring-red-300',
+		'focus:border-red-500'
+	];
+
 	return (
 		<input
 			id={props.name}
-			className={defaultClasses.join(' ')}
+			className={[
+				...defaultClasses,
+				...(fieldError ? invalidClasses : []),
+			].join(' ')}
 			{...register(props.name)}
 			{...props}
 		/>
